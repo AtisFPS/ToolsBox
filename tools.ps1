@@ -92,7 +92,7 @@ function wppChanger {
 
 function PoupliWPP {
         # Telecharger et definir le logo comme icone
-        $downloadUrl = "https://dl.poupli.net/Logo-PPNET-192x192-WB.png"
+        $downloadUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadLogo-PPNET-192x192-WB.png"
         $destinationPath = "$temp\Logo-PPNET-192x192-WB.png"
     
         # Verifier si le fichier existe deja
@@ -150,7 +150,7 @@ function PoupliWPP {
         $button1.Add_Click({
             $wppPath = "$imgfolder\BandW-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/BandW-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadBandW-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -163,7 +163,7 @@ function PoupliWPP {
         $button2.Add_Click({
             $wppPath = "$imgfolder\BlackTest-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/BlackTest-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadBlackTest-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -176,7 +176,7 @@ function PoupliWPP {
         $button3.Add_Click({
             $wppPath = "$imgfolder\CableTEST-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/CableTEST-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadCableTEST-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -189,7 +189,7 @@ function PoupliWPP {
         $button4.Add_Click({
             $wppPath = "$imgfolder\CableW-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/CableW-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadCableW-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -201,7 +201,7 @@ function PoupliWPP {
         $button5.Add_Click({
             $wppPath = "$imgfolder\GfB-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/GfB-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadGfB-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -214,7 +214,7 @@ function PoupliWPP {
         $button6.Add_Click({
             $wppPath = "$imgfolder\GfW-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/GfW-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadGfW-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -227,7 +227,7 @@ function PoupliWPP {
         $button7.Add_Click({
             $wppPath = "$imgfolder\Lake-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/Lake-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadLake-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -244,7 +244,7 @@ function PoupliWPP {
         $button9.Add_Click({
             $wppPath = "$imgfolder\Moon2-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/Moon2-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadMoon2-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -257,7 +257,7 @@ function PoupliWPP {
         $button10.Add_Click({
             $wppPath = "$imgfolder\Moon-Poupli.net.jpg"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/Moon-Poupli.net.jpg" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadMoon-Poupli.net.jpg" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -270,7 +270,7 @@ function PoupliWPP {
         $button11.Add_Click({
             $wppPath = "$imgfolder\NightLake-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/NightLake-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadNightLake-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -283,7 +283,7 @@ function PoupliWPP {
         $button12.Add_Click({
             $wppPath = "$imgfolder\Road-Poupli.net.jpg"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/Road-Poupli.net.jpg" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadRoad-Poupli.net.jpg" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -296,7 +296,7 @@ function PoupliWPP {
         $button13.Add_Click({
             $wppPath = "$imgfolder\TEST-Cable-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/TEST-Cable-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadTEST-Cable-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -309,7 +309,7 @@ function PoupliWPP {
         $button14.Add_Click({
             $wppPath = "$imgfolder\WandB-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/WandB-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadWandB-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -322,7 +322,7 @@ function PoupliWPP {
         $button15.Add_Click({
             $wppPath = "$imgfolder\WPP-BfW.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/WPP-BfW.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadWPP-BfW.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -339,7 +339,7 @@ function PoupliWPP {
         $button16.Add_Click({
             $wppPath = "$imgfolder\WPP-Earth-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/WPP-Earth-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadWPP-Earth-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -352,7 +352,7 @@ function PoupliWPP {
         $button17.Add_Click({
             $wppPath = "$imgfolder\WPP-WfB-Poupli.net.png"
             if (-not (Test-Path -Path $wppPath)) {
-                Invoke-WebRequest -Uri "https://dl.poupli.net/WPP-WfB-Poupli.net.png" -OutFile $wppPath
+                Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadWPP-WfB-Poupli.net.png" -OutFile $wppPath
             }
             wppChanger $wppPath
         })
@@ -365,7 +365,7 @@ function PoupliWPP {
        $button18.Add_Click({
            $wppPath = "$imgfolder\Blue-PPNET.png"
            if (-not (Test-Path -Path $wppPath)) {
-               Invoke-WebRequest -Uri "https://dl.poupli.net/Blue-PPNET.png" -OutFile $wppPath
+               Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadBlue-PPNET.png" -OutFile $wppPath
            }
            wppChanger $wppPath
        }) 
@@ -378,7 +378,7 @@ function PoupliWPP {
        $button18b.Add_Click({
            $wppPath = "$imgfolder\Blue-PPNET2.png"
            if (-not (Test-Path -Path $wppPath)) {
-               Invoke-WebRequest -Uri "https://dl.poupli.net/Blue-PPNET2.png" -OutFile $wppPath
+               Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadBlue-PPNET2.png" -OutFile $wppPath
            }
            wppChanger $wppPath
        }) 
@@ -391,7 +391,7 @@ function PoupliWPP {
        $button19.Add_Click({
            $wppPath = "$imgfolder\LightGold-PPNET.png"
            if (-not (Test-Path -Path $wppPath)) {
-               Invoke-WebRequest -Uri "https://dl.poupli.net/LightGold-PPNET.png" -OutFile $wppPath
+               Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadLightGold-PPNET.png" -OutFile $wppPath
            }
            wppChanger $wppPath
        })            
@@ -404,7 +404,7 @@ function PoupliWPP {
       $button20.Add_Click({
           $wppPath = "$imgfolder\LightBlue-PPNET.png"
           if (-not (Test-Path -Path $wppPath)) {
-              Invoke-WebRequest -Uri "https://dl.poupli.net/LightBlue-PPNET.png" -OutFile $wppPath
+              Invoke-WebRequest -Uri "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadLightBlue-PPNET.png" -OutFile $wppPath
           }
           wppChanger $wppPath
       })       
@@ -546,7 +546,7 @@ function firewallfun {
     $form.Text = "Etat des Pare-feu Windows"
     $form.Size = New-Object System.Drawing.Size(400, 175)
         # Telecharger et definir le logo comme icone
-        $LogoUrl = "https://dl.poupli.net/logo-tools.png"
+        $LogoUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadlogo-tools.png"
         $LogoPath = "C:\Windows\Temp\logo-tools.png"
         
         # Verifier si le fichier existe deja
@@ -560,7 +560,7 @@ function firewallfun {
         }
         
         # Telecharger et definir l'image comme fond d ecran
-         $BackgroundURL = "https://dl.poupli.net/background-tools.jpg"
+         $BackgroundURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadbackground-tools.jpg"
          $BackgroundPath = "C:\Windows\Temp\background-tools.jpg"
          
          # Verifier si le fichier existe deja
@@ -626,7 +626,7 @@ function InstallFirefox {
 
 function MultiInstall {
     # Telecharger et definir le logo comme icone
-    $LogoUrl = "https://dl.poupli.net/logo-tools.png"
+    $LogoUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadlogo-tools.png"
     $LogoPath = "C:\Windows\Temp\logo-tools.png"
     
     # Verifier si le fichier existe deja
@@ -640,7 +640,7 @@ function MultiInstall {
     }
     
     # Telecharger et definir l'image comme fond d ecran
-     $BackgroundURL = "https://dl.poupli.net/background-tools.jpg"
+     $BackgroundURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadbackground-tools.jpg"
      $BackgroundPath = "C:\Windows\Temp\background-tools.jpg"
      
      # Verifier si le fichier existe deja
@@ -712,7 +712,7 @@ function ResetSSHFunction{
 
 function UtilsFunction {
       # Telecharger et definir le logo comme icone
-      $LogoUrl = "https://dl.poupli.net/logo-tools.png"
+      $LogoUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadlogo-tools.png"
       $LogoPath = "C:\Windows\Temp\logo-tools.png"
       
       # Verifier si le fichier existe deja
@@ -726,7 +726,7 @@ function UtilsFunction {
       }
       
       # Telecharger et definir l'image comme fond d ecran
-       $BackgroundURL = "https://dl.poupli.net/background-tools.jpg"
+       $BackgroundURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadbackground-tools.jpg"
        $BackgroundPath = "C:\Windows\Temp\background-tools.jpg"
        
        # Verifier si le fichier existe deja
@@ -818,7 +818,7 @@ function UtilsFunction {
 
 function Win11CustomFunction {
       # Telecharger et definir le logo comme icone
-      $LogoUrl = "https://dl.poupli.net/logo-tools.png"
+      $LogoUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadlogo-tools.png"
       $LogoPath = "C:\Windows\Temp\logo-tools.png"
       
       # Verifier si le fichier existe deja
@@ -832,7 +832,7 @@ function Win11CustomFunction {
       }
       
       # Telecharger et definir l'image comme fond d ecran
-       $BackgroundURL = "https://dl.poupli.net/background-tools.jpg"
+       $BackgroundURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadbackground-tools.jpg"
        $BackgroundPath = "C:\Windows\Temp\background-tools.jpg"
        
        # Verifier si le fichier existe deja
@@ -912,7 +912,7 @@ function Win11CustomFunction {
 function FenetreGraphique {
 
     # Telecharger et definir le logo comme icone
-    $LogoUrl = "https://dl.poupli.net/logo-tools.png"
+    $LogoUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadlogo-tools.png"
     $LogoPath = "C:\Windows\Temp\logo-tools.png"
     
     # Verifier si le fichier existe deja
@@ -926,7 +926,7 @@ function FenetreGraphique {
     }
     
     # Telecharger et definir l'image comme fond d ecran
-     $BackgroundURL = "https://dl.poupli.net/background-tools.jpg"
+     $BackgroundURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/uploadbackground-tools.jpg"
      $BackgroundPath = "C:\Windows\Temp\background-tools.jpg"
      
      # Verifier si le fichier existe deja
