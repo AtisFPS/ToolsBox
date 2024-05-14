@@ -1,6 +1,6 @@
 # STS2 - ToolsBox
 ![screen-tools](screen-tools.png)
-Boite a outils en powershell 
+
 ### Utilisation ( via Github )
 ```
 irm https://raw.githubusercontent.com/AtisFPS/WinTools/main/tools.ps1 | iex
