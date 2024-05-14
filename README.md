@@ -1,4 +1,4 @@
-# STS2 - ToolsBox
+# ToolsBox - SISR
 Projet de boite a outils en powershell , idée inspiré par le Winutils de @christitustech . 
 Premier projet powershell pour une version graphique [Voir le site de sanction](https://sanction.poupli.net/)
 
