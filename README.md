@@ -5,14 +5,7 @@ Le melter a ete retiré car il est detecté comme virus par le Windows Defender 
 
 ![screen-tools](./upload/screen-tools.png)
 
-#### Utilisation ( via Github )
-```
-irm https://raw.githubusercontent.com/AtisFPS/WinTools/main/tools.ps1 | iex
-```
-En cas d'erreur : 
-```
-iwr -useb https://raw.githubusercontent.com/AtisFPS/WinTools/main/tools.ps1 | iex
-```
+
 #### Utilisation ( via mon serveur )
 ```
 irm https://sanction.poupli.net/tools.ps1 | iex
@@ -21,6 +14,17 @@ En cas d'erreur :
 ```
 iwr -useb https://sanction.poupli.net/tools.ps1 | iex
 ```
+
+#### Utilisation ( via Github )
+```
+irm https://raw.githubusercontent.com/AtisFPS/WinTools/main/tools.ps1 | iex
+```
+En cas d'erreur : 
+```
+iwr -useb https://raw.githubusercontent.com/AtisFPS/WinTools/main/tools.ps1 | iex
+```
+
+
 >### Contributeur 
 <a href="https://github.com/AtisFPS/ToolsBox/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=AtisFPS/ToolsBox" />
