@@ -2,6 +2,7 @@ $downloadUrl = "https://dl.poupli.net/Logo-PPNET-192x192-WB.png"
 $destinationPath = "$temp\Logo-PPNET-192x192-WB.png"
 $temp           = "$env:TEMP"
 $imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
+Install-Module -Name WindowsDesktopBackground
 
 function wppChanger {
         param (
@@ -39,7 +40,7 @@ function wppChanger {
  
         $subForm.Icon = [System.Drawing.Icon]::FromHandle((New-Object System.Drawing.Bitmap $destinationPath).GetHicon())
     
-########################################################################################
+    ########################################################################################
         $subFormChoix = New-Object System.Windows.Forms.Form
         $subFormChoix.Text = "Choix du Fond d'Ecran"
         $subFormChoix.Size = New-Object System.Drawing.Size(735, 390)

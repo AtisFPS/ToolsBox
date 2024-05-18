@@ -1,3 +1,4 @@
+Install-Module -Name WindowsDesktopBackground 
         param (
             [string]$ImagePath
         )
