@@ -1,7 +1,7 @@
-# Script graphique d'outils pour les STS2
+# Script powershell etant une boite a outils permettant d'acce
 # Tout téléchargement sera effectué dans un dossier temporaire $temp/
 
-$host.UI.RawUI.WindowTitle = "ToolsBox - STS2"
+$host.UI.RawUI.WindowTitle = "ToolsBox - Powershell"
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
 Import-Module -Name PowerShellGet
@@ -19,6 +19,21 @@ $cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload
 #    $ScriptsPath = "$scriptURL/"
 #    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 
+function TestCacheGraphique{
+    $LogoUrl = "$cdnURL/logo-tools.png"
+    $LogoPath = "$temp/logo-tools.png"
+    ## Logo de la fenetre graphique 
+    if (-not (Test-Path $LogoPath)) {
+            $wc = New-Object System.Net.WebClient
+            $wc.DownloadFile($LogoUrl, $LogoPath)
+            }
+    ## Fond de la fenetre graphique 
+    if (-not (Test-Path $BackgroundPath)) {
+            $wc = New-Object System.Net.WebClient
+            $wc.DownloadFile($BackgroundURL, $BackgroundPath)
+        } else {
+        }
+}
 function EchoToolsBox {
     cls
     Write-Host ''
@@ -34,12 +49,16 @@ function EchoToolsBox {
     Write-Host '                     \__| \______/  \______/ \__|\_______/ \_______/  \______/ \__/  \__|'
     Write-Host ''
     Write-Host ''
+    Write-Host ''
     Write-Host '--'
     Write-Host 'Script mis a jour regulierement'
     Write-Host 'Certaines fonction sont des scripts GitHub directement integrer'
     Write-Host '----------------------------------------------------------------'
     Write-Host 'Made by Hugo SERRURE'
+    Write-Host '--'
+    Write-host 'Github : https://github.com/AtisFPS/ToolsBox'
     Write-Host 'https://hserrure.poupli.net/'
+    Write-Host '--'
     Write-Host 'Contact : hserrure@poupli.net'
     Write-Host 'All right reserved'
     Write-Host '--'
@@ -64,16 +83,6 @@ function RepairSystem{
     $ScriptsPath = "$scriptURL/system-repair.ps1"
     Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
-function Tankedge {
-    $WinUtilsEdgeURL = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/edgeremoval.bat"
-    $WinUtilsEdgePath = "$env:TEMP\edgeremoval.bat"
-    Invoke-WebRequest -Uri $WinUtilsEdgeURL -OutFile $WinUtilsEdgePath
-    Start-Process $WinUtilsEdgePath
-}
-function RemoveOneDrive {
-    $ScriptsPath = "$scriptURL/remove-onedrive.ps1"
-    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
-}
 function firewallfun {
     $ScriptsPath = "$scriptURL/firewall-status.ps1"
     Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
@@ -87,111 +96,13 @@ function ResetSSHFunction{
     cd .ssh
     rm .\known_hosts
 }
-
+function DebloatFunction {
+    $ScriptsPath = "$scriptURL/debloat-menu.ps1"
+    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
+}
 function UtilsFunction {
-      # Telecharger et definir le logo comme icone
-      $LogoUrl = "$cdnURL/logo-tools.png"
-      $LogoPath = "$temp/logo-tools.png"
-
-      # Verifier si le fichier existe deja
-      if (-not (Test-Path $LogoPath)) {
-          # Telecharger le fichier
-          $wc = New-Object System.Net.WebClient
-          $wc.DownloadFile($LogoUrl, $LogoPath)
-          Write-Host "Logo telecharger depuis : $LogoUrl"
-      } else {
-          Write-Output "Logo deja existant ici : $LogoPath"
-      }
-      
-      # Telecharger et definir l'image comme fond d ecran
-       $BackgroundURL = "$cdnURL/background-tools.jpg"
-       $BackgroundPath = "$temp/background-tools.jpg"
-       
-       # Verifier si le fichier existe deja
-       if (-not (Test-Path $BackgroundPath)) {
-           # Telecharger le fichier
-           $wc = New-Object System.Net.WebClient
-           $wc.DownloadFile($BackgroundURL, $BackgroundPath)
-           Write-Host "Fond telecharger depuis : $BackgroundURL"
-       } else {
-           Write-Output "Fond deja existant ici : $BackgroundPath"
-       }
-      cls 
-  
-      EchoToolsBox
-      #############################################################
-      #               Menu Principal                              #
-      #############################################################
-      
-      $form = New-Object System.Windows.Forms.Form
-      $form.Text = "Outils - Administration"
-      $form.Size = New-Object System.Drawing.Size(400, 650)
-      # Defini le logo comme icone de la fenetre
-      $form.Icon = [System.Drawing.Icon]::FromHandle((New-Object System.Drawing.Bitmap $LogoPath).GetHicon())
-      # Defini le fond d ecran de la fenetre
-      $form.BackgroundImage = [System.Drawing.Image]::FromFile($BackgroundPath)
-      $form.BackgroundImageLayout = "Stretch"
-      $form.StartPosition = "CenterScreen"  
-  
-      ##########################################################################
-     # Afficher le panneau de configuration
-     $buttonControlPanel = New-Object System.Windows.Forms.Button
-     $buttonControlPanel.Text = "ControlPanel"
-     $buttonControlPanel.Size = New-Object System.Drawing.Size(300, 30)
-     $buttonControlPanel.Location = New-Object System.Drawing.Point(50, 20)
- 
-     $buttonControlPanel.Add_Click({
-         Start-Process "control"
-     })
-      $form.Controls.Add($buttonControlPanel)
-
- ##########################################################################
-      # Afficher le panneau de configuration
-     $buttonSSHReset = New-Object System.Windows.Forms.Button
-     $buttonSSHReset.Text = "Reset les clefs SSH"
-     $buttonSSHReset.Size = New-Object System.Drawing.Size(300, 30)
-     $buttonSSHReset.Location = New-Object System.Drawing.Point(50, 70)
- 
-     $buttonSSHReset.Add_Click({
-         ResetSSHFunction
-     })
-      $form.Controls.Add($buttonSSHReset)
-    ##########################################################################
-    #   Configuration de l addresse IP 
-    $buttonIPtools = New-Object System.Windows.Forms.Button
-    $buttonIPtools.Text = "Configuration de l'addresse IP"
-    $buttonIPtools.Size = New-Object System.Drawing.Size(300, 30)
-    $buttonIPtools.Location = New-Object System.Drawing.Point(50, 120)
-    $buttonIPtools.Add_Click({
-        IPtools
-    })
-    $form.Controls.Add($buttonIPtools)
-    ##########################################################################
-    #   Affiche les cartes reseaux du systeme
-    $buttonNetCard = New-Object System.Windows.Forms.Button
-    $buttonNetCard.Text = "Afficher les cartes reseaux"
-    $buttonNetCard.Size = New-Object System.Drawing.Size(300, 30)
-    $buttonNetCard.Location = New-Object System.Drawing.Point(50, 170)
-    $buttonNetCard.Add_Click({
-        Start-Process "ncpa.cpl"
-    })
-    $form.Controls.Add($buttonNetCard)
-    ##########################################################################
-    ##########################################################################
-
-        # Creer un bouton "Quitter"
-        $buttonQuitter = New-Object System.Windows.Forms.Button
-        $buttonQuitter.Text = "Quitter"
-        $buttonQuitter.Size = New-Object System.Drawing.Size(300, 30)
-        $buttonQuitter.Location = New-Object System.Drawing.Point(50, 570)
-        $buttonQuitter.Add_Click({
-            $form.Close()
-        })
-    
-        # Ajouter le bouton "Quitter" a la fenetre
-        $form.Controls.Add($buttonQuitter)
-    # Afficher la fenetre
-    $form.ShowDialog()
+    $ScriptsPath = "$scriptURL/utils-menu.ps1"
+    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 
 function Win11CustomFunction {
@@ -222,8 +133,6 @@ function Win11CustomFunction {
        } else {
            Write-Output "Fond deja existant ici : $BackgroundPath"
        }
-      cls 
-  
       EchoToolsBox
       #############################################################
       #               Menu Principal                              #
@@ -315,15 +224,13 @@ function FenetreGraphique {
      } else {
          Write-Output "Fond deja existant ici : $BackgroundPath"
      }
-    cls 
-
     EchoToolsBox
     #############################################################
     #               Menu Principal                              #
     #############################################################
     
     $form = New-Object System.Windows.Forms.Form
-    $form.Text = "ToolsBox - Graphique"
+    $form.Text = "ToolsBox - Menu Principal"
     $form.Size = New-Object System.Drawing.Size(400, 650)
     # Defini le logo comme icone de la fenetre
     $form.Icon = [System.Drawing.Icon]::FromHandle((New-Object System.Drawing.Bitmap $LogoPath).GetHicon())
@@ -335,10 +242,9 @@ function FenetreGraphique {
     ##########################################################################
      #   Affiche le panneau de configuration
      $buttonOutils = New-Object System.Windows.Forms.Button
-     $buttonOutils.Text = "Outils - Administration"
+     $buttonOutils.Text = "Outils d'administration Windows "
      $buttonOutils.Size = New-Object System.Drawing.Size(300, 30)
      $buttonOutils.Location = New-Object System.Drawing.Point(50, 20)
- 
      $buttonOutils.Add_Click({
          UtilsFunction
      })
@@ -355,35 +261,12 @@ function FenetreGraphique {
      })
      $form.Controls.Add($buttonDebloat)
     ##########################################################################    
-    ##########################################################################
-
-    #  Sortie d un tank T29 pour detruire Edge 
-    $buttonTankedge = New-Object System.Windows.Forms.Button
-    $buttonTankedge.Text = "Bye bye Edge"
-    $buttonTankedge.Size = New-Object System.Drawing.Size(300, 30)
-    $buttonTankedge.Location = New-Object System.Drawing.Point(50, 170)
-    $buttonTankedge.Add_Click({
-        TankEdge
-    })
-    $form.Controls.Add($buttonTankedge)
-    ##########################################################################
-    # Création du bouton pour supprimer OneDrive
-    $buttonRemoveOneDrive = New-Object System.Windows.Forms.Button
-    $buttonRemoveOneDrive.Text = "Remove OneDrive"
-    $buttonRemoveOneDrive.Size = New-Object System.Drawing.Size(300, 30)
-    $buttonRemoveOneDrive.Location = New-Object System.Drawing.Point(50, 220)
-    $buttonRemoveOneDrive.Add_Click({  
-        RemoveOneDrive
-    })
-    $form.Controls.Add($buttonRemoveOneDrive)
- 
-    ##########################################################################
 
     # Liste d'application possible d'installer  
     $buttonMultistall = New-Object System.Windows.Forms.Button
     $buttonMultistall.Text = "MultiInstall"
     $buttonMultistall.Size = New-Object System.Drawing.Size(300, 30)
-    $buttonMultistall.Location = New-Object System.Drawing.Point(50, 270)
+    $buttonMultistall.Location = New-Object System.Drawing.Point(50, 120)
     $buttonMultistall.Add_Click({
         MultiInstall
     })
@@ -393,40 +276,18 @@ function FenetreGraphique {
     $buttonFixErr = New-Object System.Windows.Forms.Button
     $buttonFixErr.Text = "Fix Erreur 2502 et 2503"
     $buttonFixErr.Size = New-Object System.Drawing.Size(300, 30)
-    $buttonFixErr.Location = New-Object System.Drawing.Point(50, 320)
+    $buttonFixErr.Location = New-Object System.Drawing.Point(50, 170)
     $buttonFixErr.Add_Click({
         Fix2502-2503
     })
     $form.Controls.Add($buttonFixErr)
 
     ##########################################################################
-    # Création du bouton pour accéder au pare-feu
-    $buttonFirewall = New-Object System.Windows.Forms.Button
-    $buttonFirewall.Text = "Firewall - Settings"
-    $buttonFirewall.Size = New-Object System.Drawing.Size(300, 30)
-    $buttonFirewall.Location = New-Object System.Drawing.Point(50, 370)
-    $buttonFirewall.Add_Click({  
-        firewallfun
-    })
-    $form.Controls.Add($buttonFirewall)  
-    
-   ##########################################################################
-       # Création d'un bouton qui lance le sanction 
-       $buttonSanction = New-Object System.Windows.Forms.Button
-       $buttonSanction.Text = "Lancer sanction en version graphique "
-       $buttonSanction.Size = New-Object System.Drawing.Size(300, 30)
-       $buttonSanction.Location = New-Object System.Drawing.Point(50, 420)
-       $buttonSanction.Add_Click({  
-           iwr -useb https://sanction.poupli.net/graphique.ps1 | iex
-       })
-       EchoToolsBox
-       $form.Controls.Add($buttonSanction)
-    ##########################################################################
        # Création d'un bouton qui lance le sanction 
        $buttonCustom = New-Object System.Windows.Forms.Button
        $buttonCustom.Text = "Customisation de Windows 11"
        $buttonCustom.Size = New-Object System.Drawing.Size(300, 30)
-       $buttonCustom.Location = New-Object System.Drawing.Point(50, 470)
+       $buttonCustom.Location = New-Object System.Drawing.Point(50, 220)
        $buttonCustom.Add_Click({  
            Win11CustomFunction
        })
@@ -438,13 +299,38 @@ function FenetreGraphique {
          $buttonRepair = New-Object System.Windows.Forms.Button
          $buttonRepair.Text = "Reparer Windows"
          $buttonRepair.Size = New-Object System.Drawing.Size(300, 30)
-         $buttonRepair.Location = New-Object System.Drawing.Point(50, 520)
+         $buttonRepair.Location = New-Object System.Drawing.Point(50, 270)
          $buttonRepair.Add_Click({
              RepairSystem
          })
      
          # Ajouter le bouton "Repair" a la fenetre
          $form.Controls.Add($buttonRepair)
+
+
+
+    ##########################################################################
+    # Création d'un bouton qui lance le sanction 
+    $BannerSanctionURL = "https://dl.poupli.net/banner-sanction.png" 
+    $BannerSanctionPath = "$temp/banner-sanction.png" 
+    if (-not (Test-Path $BannerSanctionPath)) {
+            $wc = New-Object System.Net.WebClient
+            $wc.DownloadFile($BannerSanctionURL, $BannerSanctionPath)
+        }
+
+    $buttonSanction = New-Object System.Windows.Forms.Button
+    $buttonSanction.Text = "Lancer le script de sanction"
+    $buttonSanction.Size = New-Object System.Drawing.Size(300, 30)
+    $buttonSanction.Location = New-Object System.Drawing.Point(50, 520)
+
+    $buttonSanction.BackgroundImage = [System.Drawing.Image]::FromFile($BannerSanctionPath)
+    $buttonSanction.BackgroundImageLayout = "Stretch"
+
+    $buttonSanction.Add_Click({  
+        irm https://sanction.poupli.net/graphique.ps1 | iex
+    })
+    $form.Controls.Add($buttonSanction)     
+
     ##########################################################################
         # Creer un bouton "Quitter"
     $buttonQuitter = New-Object System.Windows.Forms.Button
@@ -463,4 +349,5 @@ function FenetreGraphique {
     # Afficher la fenetre
     $form.ShowDialog()
 }
+TestCacheGraphique
 FenetreGraphique
