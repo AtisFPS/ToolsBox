@@ -12,8 +12,8 @@ Clear-Host
 $temp           = "$env:TEMP"
 $imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
 $scriptURL      = "https://sanction.poupli.net/scripts/"
-#$cdnURL         = "https://dl.poupli.net"
-$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload"
+$cdnURL         = "https://dl.poupli.net"
+#$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload"
 
 
 #    $ScriptsPath = "$scriptURL/"
@@ -88,8 +88,9 @@ function firewallfun {
     Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 function MultiInstall {
-    $ScriptsPath = "$scriptURL/multi-install.ps1"
-    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
+    #$ScriptsPath = "$scriptURL/multi-install.ps1"
+    #Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
+    irm https://sanction.poupli.net/scripts/multi-install.ps1 | iex
 }
 function ResetSSHFunction{
     cd $env:USERPROFILE
