@@ -5,13 +5,18 @@ function InstallChrome {
     & $path /install
     Remove-Item "$env:TEMP\ChromeStandaloneSetup64.exe"
 }
+
 function InstallFirefox {
     $firefoxUrl = "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=fr"
     $destination = "$env:TEMP\firefox_installer.exe"
+
     Invoke-WebRequest -Uri $firefoxUrl -OutFile $destination
+
     Start-Process -FilePath "$env:TEMP\firefox_installer.exe" -ArgumentList "/S" -Wait
     Remove-Item "$env:TEMP\firefox_installer.exe"
 }
+
+function Multi-Install{
 
     # Telecharger et definir le logo comme icone
     $LogoUrl = "https://dl.poupli.net/logo-tools.png"
@@ -91,3 +96,5 @@ function InstallFirefox {
 
     ###########################################################################
     $subform.ShowDialog()
+}
+Multi-Install

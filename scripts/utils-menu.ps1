@@ -77,6 +77,17 @@ $LogoPath = "$temp/logo-tools.png"
     })
     $form.Controls.Add($buttonFirewall)  
     
+
+    # Ouvrir l'ancien melanger de volume
+    $buttonMelangerVol = New-Object System.Windows.Forms.Button
+    $buttonMelangerVol.Text = "Melangeur de volume - Windows 10"
+    $buttonMelangerVol.Size = New-Object System.Drawing.Size(300, 30)
+    $buttonMelangerVol.Location = New-Object System.Drawing.Point(50, 270)
+    $buttonMelangerVol.Add_Click({  
+        Start-Process "sndvol.exe"
+    })
+    $form.Controls.Add($buttonMelangerVol)  
+
     ##########################################################################
     ##########################################################################
 
