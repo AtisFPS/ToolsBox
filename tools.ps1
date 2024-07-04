@@ -91,9 +91,9 @@ function firewallfun {
     Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 function MultiInstall {
-    #$ScriptsPath = "$scriptURL/multi-install.ps1"
-    #Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
-    irm https://sanction.poupli.net/scripts/multi-install.ps1 | iex
+    $ScriptsPath = "$scriptURL/multi-install.ps1"
+    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
+    #irm https://sanction.poupli.net/scripts/multi-install.ps1 | iex
 }
 function ResetSSHFunction{
     cd $env:USERPROFILE
