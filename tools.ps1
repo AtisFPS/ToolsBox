@@ -16,7 +16,7 @@ $temp           = "$env:TEMP"
 $imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
 $scriptURL      = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/scripts/"
 $cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload/"
-$ScriptsPath = "$scriptURL"
+$ScriptsPath = "$scriptURL/"
 
 #    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 
