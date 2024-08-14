@@ -23,18 +23,28 @@ $cdnURL         = "https://dl.poupli.net/"
 function TestCacheGraphique{
     $LogoUrl = "$cdnURL/logo-tools.png"
     $LogoPath = "$temp/logo-tools.png"
-    ## Logo de la fenetre graphique 
+    $BackgroundURL = "$cdnURL/background-tools.jpg"
+    $BackgroundPath = "$temp/background-tools.jpg"
+
     if (-not (Test-Path $LogoPath)) {
-            $wc = New-Object System.Net.WebClient
+        $wc = New-Object System.Net.WebClient
+        try {
             $wc.DownloadFile($LogoUrl, $LogoPath)
-            }
-    ## Fond de la fenetre graphique 
-    if (-not (Test-Path $BackgroundPath)) {
-            $wc = New-Object System.Net.WebClient
-            $wc.DownloadFile($BackgroundURL, $BackgroundPath)
-        } else {
+        } catch {
+            Write-Host "Erreur lors du téléchargement du logo."
         }
+    }
+
+    if (-not (Test-Path $BackgroundPath)) {
+        $wc = New-Object System.Net.WebClient
+        try {
+            $wc.DownloadFile($BackgroundURL, $BackgroundPath)
+        } catch {
+            Write-Host "Erreur lors du téléchargement du fond d'écran."
+        }
+    }
 }
+
 function EchoToolsBox {
     cls
     Write-Host ''
@@ -371,5 +381,5 @@ function FenetreGraphique {
     # Afficher la fenetre
     $form.ShowDialog()
 }
-#TestCacheGraphique
+TestCacheGraphique
 FenetreGraphique
