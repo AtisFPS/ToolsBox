@@ -1,3 +1,5 @@
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # Script powershell etant une boite a outils permettant d'acce
 # Tout téléchargement sera effectué dans un dossier temporaire $temp/
 
@@ -12,28 +14,24 @@ Add-Type -AssemblyName PresentationCore,PresentationFramework
 Clear-Host
 $temp           = "$env:TEMP"
 $imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
-$scriptURL      = "https://sanction.poupli.net/scripts/"
-$cdnURL         = "https://dl.poupli.net/"
-#$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload"
+$scriptURL      = "https://raw.githubusercontent.com/AtisFPS/WinTools/mainscripts/"
+$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload/"
 
 
 #    $ScriptsPath = "$scriptURL/"
 #    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 
 function TestCacheGraphique{
-    $LogoUrl = "$cdnURL\logo-tools.png"
-    $LogoPath = "$temp\logo-tools.png"
-    $BackgroundURL = "$cdnURL\background-tools.jpg"
-    $BackgroundPath = "$temp\background-tools.jpg"
+    $LogoUrl = "$cdnURL/logo-tools.png"
+    $LogoPath = "$temp/logo-tools.png"
+    $BackgroundURL = "$cdnURL/background-tools.jpg"
+    $BackgroundPath = "$temp/background-tools.jpg"
 
-    if (-not (Test-Path $LogoPath)) {
-        $wc = New-Object System.Net.WebClient
-        try {
-            $wc.DownloadFile($LogoUrl, $LogoPath)
-        } catch {
-            Write-Host "Erreur lors du téléchargement du logo."
-        }
-    }
+ if (Test-Path $BannerSanctionPath) {
+    $buttonSanctionRapide.BackgroundImage = [System.Drawing.Image]::FromFile($BannerSanctionPath)
+} else {
+    Write-Host "Erreur: Le fichier $BannerSanctionPath n'existe pas."
+}
 
     if (-not (Test-Path $BackgroundPath)) {
         $wc = New-Object System.Net.WebClient
@@ -320,7 +318,7 @@ function FenetreGraphique {
          $form.Controls.Add($buttonRepair)
     ##########################################################################
     # Création d'un bouton qui lance le sanction 
-    $BannerSanctionURL = "https://dl.poupli.net/banner-sanction.png" 
+    $BannerSanctionURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload//banner-sanction.png" 
     $BannerSanctionPath = "$temp/banner-sanction.png" 
     if (-not (Test-Path $BannerSanctionPath)) {
             $wc = New-Object System.Net.WebClient
@@ -343,7 +341,7 @@ function FenetreGraphique {
 
     ##########################################################################
     # Création d'un bouton qui lance le sanction 
-    $BannerSanctionURL = "https://dl.poupli.net/banner-sanction.png" 
+    $BannerSanctionURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload//banner-sanction.png" 
     $BannerSanctionPath = "$temp/banner-sanction.png" 
     if (-not (Test-Path $BannerSanctionPath)) {
             $wc = New-Object System.Net.WebClient
