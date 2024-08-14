@@ -21,10 +21,10 @@ $cdnURL         = "https://dl.poupli.net/"
 #    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 
 function TestCacheGraphique{
-    $LogoUrl = "$cdnURL/logo-tools.png"
-    $LogoPath = "$temp/logo-tools.png"
-    $BackgroundURL = "$cdnURL/background-tools.jpg"
-    $BackgroundPath = "$temp/background-tools.jpg"
+    $LogoUrl = "$cdnURL\logo-tools.png"
+    $LogoPath = "$temp\logo-tools.png"
+    $BackgroundURL = "$cdnURL\background-tools.jpg"
+    $BackgroundPath = "$temp\background-tools.jpg"
 
     if (-not (Test-Path $LogoPath)) {
         $wc = New-Object System.Net.WebClient
