@@ -2,6 +2,7 @@
 # Tout téléchargement sera effectué dans un dossier temporaire $temp/
 
 $host.UI.RawUI.WindowTitle = "ToolsBox - Powershell"
+
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
 Import-Module -Name PowerShellGet
@@ -11,12 +12,9 @@ Add-Type -AssemblyName PresentationCore,PresentationFramework
 Clear-Host
 $temp           = "$env:TEMP"
 $imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
-
-#$scriptURL      = "https://sanction.poupli.net/scripts/"
-$scriptURL       = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/scripts/"
-
-#$cdnURL         = "https://dl.poupli.net"
-$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload"
+$scriptURL      = "https://sanction.poupli.net/scripts/"
+$cdnURL         = "https://dl.poupli.net/"
+#$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload"
 
 
 #    $ScriptsPath = "$scriptURL/"
@@ -91,9 +89,9 @@ function firewallfun {
     Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 function MultiInstall {
-    $ScriptsPath = "$scriptURL/multi-install.ps1"
-    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
-    #irm https://sanction.poupli.net/scripts/multi-install.ps1 | iex
+    #$ScriptsPath = "$scriptURL/multi-install.ps1"
+    #Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
+    #irm "https://sanction.poupli.net/scripts/multi-install.ps1" | iex
 }
 function ResetSSHFunction{
     cd $env:USERPROFILE
@@ -310,7 +308,27 @@ function FenetreGraphique {
      
          # Ajouter le bouton "Repair" a la fenetre
          $form.Controls.Add($buttonRepair)
+    ##########################################################################
+    # Création d'un bouton qui lance le sanction 
+    $BannerSanctionURL = "https://dl.poupli.net/banner-sanction.png" 
+    $BannerSanctionPath = "$temp/banner-sanction.png" 
+    if (-not (Test-Path $BannerSanctionPath)) {
+            $wc = New-Object System.Net.WebClient
+            $wc.DownloadFile($BannerSanctionURL, $BannerSanctionPath)
+        }
 
+    $buttonSanctionRapide = New-Object System.Windows.Forms.Button
+    $buttonSanctionRapide.Text = "Lancer le script de sanction - BTS Rapide"
+    $buttonSanctionRapide.Size = New-Object System.Drawing.Size(300, 30)
+    $buttonSanctionRapide.Location = New-Object System.Drawing.Point(50, 470)
+
+    $buttonSanctionRapide.BackgroundImage = [System.Drawing.Image]::FromFile($BannerSanctionPath)
+    $buttonSanctionRapide.BackgroundImageLayout = "Stretch"
+
+    $buttonSanctionRapide.Add_Click({  
+        irm https://sanction.poupli.net/rapide.ps1 | iex
+    })
+    $form.Controls.Add($buttonSanctionRapide)     
 
 
     ##########################################################################
@@ -323,7 +341,7 @@ function FenetreGraphique {
         }
 
     $buttonSanction = New-Object System.Windows.Forms.Button
-    $buttonSanction.Text = "Lancer le script de sanction"
+    $buttonSanction.Text = "Lancer le script de sanction - BTS Graphique"
     $buttonSanction.Size = New-Object System.Drawing.Size(300, 30)
     $buttonSanction.Location = New-Object System.Drawing.Point(50, 520)
 
@@ -353,5 +371,5 @@ function FenetreGraphique {
     # Afficher la fenetre
     $form.ShowDialog()
 }
-TestCacheGraphique
+#TestCacheGraphique
 FenetreGraphique
