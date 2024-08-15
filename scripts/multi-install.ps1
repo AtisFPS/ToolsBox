@@ -19,7 +19,7 @@ function InstallFirefox {
 function Multi-Install{
 
     # Telecharger et definir le logo comme icone
-    $LogoUrl = "https://dl.poupli.net/logo-tools.png"
+    $LogoUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload/logo-tools.png"
     $LogoPath = "C:\Windows\Temp\logo-tools.png"
     
     # Verifier si le fichier existe deja
@@ -33,7 +33,7 @@ function Multi-Install{
     }
     
     # Telecharger et definir l'image comme fond d ecran
-     $BackgroundURL = "https://dl.poupli.net/background-tools.jpg"
+     $BackgroundURL = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload/background-tools.jpg"
      $BackgroundPath = "C:\Windows\Temp\background-tools.jpg"
      
      # Verifier si le fichier existe deja
