@@ -16,7 +16,7 @@ function InstallFirefox {
     Remove-Item "$env:TEMP\firefox_installer.exe"
 }
 
-function Multi-Install{
+function MultiInstall{
 
     # Telecharger et definir le logo comme icone
     $LogoUrl = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload/logo-tools.png"
@@ -45,7 +45,7 @@ function Multi-Install{
      } else {
          Write-Output "Fond deja existant ici : $BackgroundPath"
      }
-    cls 
+    Clear-Host
   
     EchoToolsBox
     #############################################################
