@@ -108,12 +108,16 @@ function ResetSSHFunction{
 function DebloatFunction {
     $ScriptsPath = "$scriptURL/debloat-menu.ps1"
     $Debloat = "Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression"
+    
+    # Vérifier si l'utilisateur actuel est un administrateur
     if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        # Lancer PowerShell avec des privilèges élevés
         $newProcess = Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"`"$Debloat`"`"" -Verb RunAs -PassThru
         $newProcess.WaitForExit()
-        return
+    } else {
+        # Exécuter directement le script si l'utilisateur est déjà administrateur
+        Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
     }
-    
 }
 function UtilsFunction {
     $ScriptsPath = "$scriptURL/utils-menu.ps1"
