@@ -7,6 +7,8 @@ $host.UI.RawUI.WindowTitle = "ToolsBox - Powershell"
 
 Add-Type -AssemblyName PresentationFramework
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName 'System.Windows.Forms'
+Add-Type -AssemblyName 'System.Drawing'
 Import-Module -Name PowerShellGet
 Install-Module -Name WindowsDesktopBackground
 Add-Type -AssemblyName PresentationCore,PresentationFramework
