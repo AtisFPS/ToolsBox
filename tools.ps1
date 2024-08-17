@@ -109,7 +109,7 @@ function ResetSSHFunction{
 }
 function DebloatFunction {
     $ScriptsPath = "$scriptURL/debloat-menu.ps1"
-    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression`"" -Verb RunAs
+    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 function UtilsFunction {
     $ScriptsPath = "$scriptURL/utils-menu.ps1"
