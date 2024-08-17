@@ -15,11 +15,11 @@ Idée inspiré par le [Winutils](https://github.com/ChrisTitusTech/winutil) de [
 
 #### Utilisation 
 ```
-irm "poupli.net/tools" | iex
+irm poupli.net/tools | iex
 ```
 En cas d'erreur : 
 ```
-iwr -useb "poupli.net/tools" | iex
+iwr -useb poupli.net/tools | iex
 ```
 
 >### Contributeur 
