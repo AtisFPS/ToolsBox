@@ -15,7 +15,6 @@ Add-Type -AssemblyName PresentationCore,PresentationFramework
 
 Clear-Host
 $temp           = "$env:TEMP"
-$imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
 $scriptURL      = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/scripts"
 $cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload/"
 $ScriptsPath = "$scriptURL/"
@@ -42,10 +41,18 @@ function TestCacheGraphique{
             Write-Host "Erreur lors du téléchargement du fond d'écran."
         }
     }
+    if (-not (Test-Path $LogoPath)) {
+        $wc = New-Object System.Net.WebClient
+        try {
+            $wc.DownloadFile($LogoUrl, $LogoPath)
+        } catch {
+            Write-Host "Erreur lors du téléchargement du fond d'écran."
+        }
+    }
 }
 
 function EchoToolsBox {
-    cls
+    Clear-Host
     Write-Host ''
     Write-Host 'Tout telechargement sera effectue dans les dossier temporaire ou dans vos images '
     Write-Host ''
@@ -73,7 +80,7 @@ function EchoToolsBox {
     Write-Host 'All right reserved'
     Write-Host '--'
 }
-function Fix2502-2503 {
+function Fix25022503 {
     $2502 = "$scriptURL/Fix2502-2503.ps1"
     Invoke-RestMethod -Uri $2502 | Invoke-Expression
 }
@@ -103,9 +110,9 @@ function MultiInstall {
 
 }
 function ResetSSHFunction{
-    cd $env:USERPROFILE
-    cd .ssh
-    rm .\known_hosts
+    Set-Locotion $env:USERPROFILE
+    Set-Locotion .ssh
+    Remove-Item .\known_hosts
 }
 function DebloatFunction {
     $ScriptsPath = "$scriptURL/debloat-menu.ps1"
@@ -266,7 +273,6 @@ function FenetreGraphique {
      $buttonDebloat.Text = "Debloat Windows"
      $buttonDebloat.Size = New-Object System.Drawing.Size(300, 30)
      $buttonDebloat.Location = New-Object System.Drawing.Point(50, 70)
- 
      $buttonDebloat.Add_Click({
          DebloatFunction
      })
@@ -289,7 +295,7 @@ function FenetreGraphique {
     $buttonFixErr.Size = New-Object System.Drawing.Size(300, 30)
     $buttonFixErr.Location = New-Object System.Drawing.Point(50, 170)
     $buttonFixErr.Add_Click({
-        Fix2502-2503
+        Fix25022503
     })
     $form.Controls.Add($buttonFixErr)
 
@@ -335,7 +341,7 @@ function FenetreGraphique {
     $buttonSanctionRapide.BackgroundImageLayout = "Stretch"
 
     $buttonSanctionRapide.Add_Click({  
-        irm https://sanction.poupli.net/rapide.ps1 | iex
+        Invoke-RestMethod https://sanction.poupli.net/rapide.ps1 | Invoke-Expression
     })
     $form.Controls.Add($buttonSanctionRapide)     
 
@@ -358,7 +364,7 @@ function FenetreGraphique {
     $buttonSanction.BackgroundImageLayout = "Stretch"
 
     $buttonSanction.Add_Click({  
-        irm https://sanction.poupli.net/graphique.ps1 | iex
+        Invoke-RestMethod https://sanction.poupli.net/graphique.ps1 | Invoke-Expression
     })
     $form.Controls.Add($buttonSanction)     
 
