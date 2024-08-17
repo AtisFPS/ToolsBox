@@ -110,8 +110,8 @@ function MultiInstall {
 
 }
 function ResetSSHFunction{
-    Set-Locotion $env:USERPROFILE
-    Set-Locotion .ssh
+    Set-Location $env:USERPROFILE
+    Set-Location .ssh
     Remove-Item .\known_hosts
 }
 function DebloatFunction {
