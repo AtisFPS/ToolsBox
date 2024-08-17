@@ -37,7 +37,7 @@ $edgeUpdateRegistryPath = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate'
 if (Test-Path -Path $edgeUpdateRegistryPath) {
     $uninstallCmdLine = (Get-ItemProperty -Path $edgeUpdateRegistryPath).UninstallCmdLine
     if ($uninstallCmdLine) {
-        Start-Process cmd.exe "/c $uninstallCmdLine" -WindowStyle Hidden -Wait
+        Start-Process cmd.exe -ArgumentList "/c $uninstallCmdLine" -WindowStyle Hidden -Wait
     }
 }
 
