@@ -9,8 +9,8 @@ $BackgroundURL = "$cdnURL/background-tools.jpg"
 $BackgroundPath = "$temp/background-tools.jpg"
 
 function Tankedge {
-    $WinUtilsEdgeURL = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/edgeremoval.bat"
-    $WinUtilsEdgePath = "$env:TEMP\edgeremoval.bat"
+    $WinUtilsEdgeURL = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/functions/private/Uninstall-WinUtilEdgeBrowser.ps1"
+    $WinUtilsEdgePath = "$env:TEMP\edgeremoval.ps1"
     Invoke-WebRequest -Uri $WinUtilsEdgeURL -OutFile $WinUtilsEdgePath
     Start-Process $WinUtilsEdgePath
 }

@@ -6,7 +6,27 @@ $LogoUrl = "$cdnURL/logo-tools.png"
 $LogoPath = "$temp/logo-tools.png"
 
     
+function TestCacheGraphique{
+    $LogoUrl = "$cdnURL/logo-tools.png"
+    $LogoPath = "$temp/logo-tools.png"
+    $BackgroundURL = "$cdnURL/background-tools.jpg"
+    $BackgroundPath = "$temp/background-tools.jpg"
 
+ if (Test-Path $BannerSanctionPath) {
+    $buttonSanctionRapide.BackgroundImage = [System.Drawing.Image]::FromFile($BannerSanctionPath)
+} else {
+    Write-Host "Erreur: Le fichier $BannerSanctionPath n'existe pas."
+}
+
+    if (-not (Test-Path $BackgroundPath)) {
+        $wc = New-Object System.Net.WebClient
+        try {
+            $wc.DownloadFile($BackgroundURL, $BackgroundPath)
+        } catch {
+            Write-Host "Erreur lors du téléchargement du fond d'écran."
+        }
+    }
+}
       #############################################################
       #               Menu Principal                              #
       #############################################################
