@@ -107,12 +107,12 @@ function ResetSSHFunction{
 }
 function DebloatFunction {
     $ScriptsPath = "$scriptURL/debloat-menu.ps1"
-    if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-        # Relance le script en tant qu'administrateur
-        $newProcess = Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression`"" -Verb RunAs -PassThru
+    if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        $newProcess = Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"`"Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression`"`"" -Verb RunAs -PassThru
         $newProcess.WaitForExit()
         return
     }
+    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 function UtilsFunction {
     $ScriptsPath = "$scriptURL/utils-menu.ps1"
