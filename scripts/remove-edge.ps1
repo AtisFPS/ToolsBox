@@ -1,7 +1,8 @@
 # Vérifier si le script est exécuté en tant qu'administrateur
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Host "Le script doit être exécuté en tant qu'administrateur." -ForegroundColor Red
-    Start-Process powershell -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"" + $PSCommandPath + "`"") -Verb RunAs
+    $scriptPath = $PSCommandPath
+    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`"" -Verb RunAs
     exit
 }
 
