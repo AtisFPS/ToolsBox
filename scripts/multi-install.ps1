@@ -97,4 +97,4 @@ function MultiInstall{
     ###########################################################################
     $subform.ShowDialog()
 }
-Multi-Install
+MultiInstall
