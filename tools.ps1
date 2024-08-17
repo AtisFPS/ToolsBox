@@ -106,17 +106,13 @@ function ResetSSHFunction{
     rm .\known_hosts
 }
 function DebloatFunction {
-    # Vérifie si le script est exécuté avec les droits d'administrateur
+    $ScriptsPath = "$scriptURL/debloat-menu.ps1"
     if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
         # Relance le script en tant qu'administrateur
-        $newProcess = Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"$PSCommandPath`"" -Verb RunAs -PassThru
+        $newProcess = Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression`"" -Verb RunAs -PassThru
         $newProcess.WaitForExit()
         return
     }
-
-    # Continue avec l'exécution du script si les droits d'administrateur sont présents
-    $ScriptsPath = "$scriptURL/debloat-menu.ps1"
-    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 function UtilsFunction {
     $ScriptsPath = "$scriptURL/utils-menu.ps1"
