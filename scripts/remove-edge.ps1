@@ -1,3 +1,10 @@
+# Vérifier si le script est exécuté en tant qu'administrateur
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host "Le script doit être exécuté en tant qu'administrateur." -ForegroundColor Red
+    Start-Process powershell -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"" + $PSCommandPath + "`"") -Verb RunAs
+    exit
+}
+
 # Définir temporairement la région sur la France (région EEA) pour la désinstallation d'Edge
 $geoKey = "HKEY_USERS\.DEFAULT\Control Panel\International\Geo"
 $nationKey = "Nation"
