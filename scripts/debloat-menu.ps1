@@ -1,8 +1,7 @@
 $temp           = "$env:TEMP"
 $imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
-$scriptURL      = "https://sanction.poupli.net/scripts/"
-$cdnURL         = "https://dl.poupli.net"
-#$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload"
+$scriptURL      = "https://raw.githubusercontent.com/AtisFPS/ToolsBox/main/scripts/"
+$cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload"
 
 $LogoUrl = "$cdnURL/logo-tools.png"
 $LogoPath = "$temp/logo-tools.png"
