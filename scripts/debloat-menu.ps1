@@ -6,10 +6,8 @@ $LogoPath = "$temp/logo-tools.png"
 $BackgroundPath = "$temp/background-tools.jpg"
 
 function Tankedge {
-    $WinUtilsEdgeURL = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/functions/private/Uninstall-WinUtilEdgeBrowser.ps1"
-    $WinUtilsEdgePath = "$env:TEMP\edgeremoval.ps1"
-    Invoke-WebRequest -Uri $WinUtilsEdgeURL -OutFile $WinUtilsEdgePath
-    Start-Process $WinUtilsEdgePath
+    $ScriptsPath = "$scriptURL/remove-edge.ps1"
+    Invoke-RestMethod -Uri $ScriptsPath | Invoke-Expression
 }
 function RemoveOneDrive {
     $ScriptsPath = "$scriptURL/remove-onedrive.ps1"
