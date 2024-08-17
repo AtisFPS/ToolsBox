@@ -1,7 +1,13 @@
-# Change temporary region to France (EEA region) for Edge uninstallation
-[microsoft.win32.registry]::SetValue('HKEY_USERS\.DEFAULT\Control Panel\International\Geo', 'Nation', 84, [Microsoft.Win32.RegistryValueKind]::String) | Out-Null
+# Définir temporairement la région sur la France (région EEA) pour la désinstallation d'Edge
+$geoKey = "HKEY_USERS\.DEFAULT\Control Panel\International\Geo"
+$nationKey = "Nation"
 
-# Uninstall Edge Stable
+$originalNation = [Microsoft.Win32.Registry]::GetValue($geoKey, $nationKey, "")
+if ($originalNation) {
+    [Microsoft.Win32.Registry]::SetValue($geoKey, $nationKey, 84, [Microsoft.Win32.RegistryValueKind]::String) | Out-Null
+}
+
+# Désinstaller Edge Stable
 $registryPath = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\ClientState\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}'
 if (Test-Path -Path $registryPath) {
     Remove-ItemProperty -Path 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate' -Name "IsEdgeStableUninstalled" -ErrorAction SilentlyContinue | Out-Null
@@ -15,24 +21,25 @@ if (Test-Path -Path $registryPath) {
     }
 }
 
-# Restore original region
-$originalNation = [microsoft.win32.registry]::GetValue('HKEY_USERS\.DEFAULT\Control Panel\International\Geo', 'Nation', [Microsoft.Win32.RegistryValueKind]::String)
-[microsoft.win32.registry]::SetValue('HKEY_USERS\.DEFAULT\Control Panel\International\Geo', 'Nation', $originalNation, [Microsoft.Win32.RegistryValueKind]::String) | Out-Null
+# Restaurer la région d'origine
+if ($originalNation) {
+    [Microsoft.Win32.Registry]::SetValue($geoKey, $nationKey, $originalNation, [Microsoft.Win32.RegistryValueKind]::String) | Out-Null
+}
 
-# Uninstall Edge components and related registry keys
+# Désinstaller les composants Edge et les clés de registre associées
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" -Name "NoRemove" -ErrorAction SilentlyContinue | Out-Null
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeWebView" -Name "NoRemove" -ErrorAction SilentlyContinue | Out-Null
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" -Name "NoRemove" -ErrorAction SilentlyContinue | Out-Null
 
-Remove-Item -Path "Computer\\HKEY_CLASSES_ROOT\\MSEdgePDF" -ErrorAction SilentlyContinue | Out-Null
-Remove-Item -Path "Computer\\HKEY_CLASSES_ROOT\\MSEdgeHTM" -ErrorAction SilentlyContinue | Out-Null
-Remove-Item -Path "Computer\\HKEY_CLASSES_ROOT\\MSEdgeMHT" -ErrorAction SilentlyContinue | Out-Null
+Remove-Item -Path "Computer\HKEY_CLASSES_ROOT\MSEdgePDF" -ErrorAction SilentlyContinue | Out-Null
+Remove-Item -Path "Computer\HKEY_CLASSES_ROOT\MSEdgeHTM" -ErrorAction SilentlyContinue | Out-Null
+Remove-Item -Path "Computer\HKEY_CLASSES_ROOT\MSEdgeMHT" -ErrorAction SilentlyContinue | Out-Null
 
 Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Recurse -ErrorAction SilentlyContinue | Out-Null
 Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge" -Recurse -ErrorAction SilentlyContinue | Out-Null
 Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate" -Recurse -ErrorAction SilentlyContinue | Out-Null
 
-# Uninstall EdgeUpdate Client
+# Désinstaller le client EdgeUpdate
 $edgeUpdateRegistryPath = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate'
 if (Test-Path -Path $edgeUpdateRegistryPath) {
     $uninstallCmdLine = (Get-ItemProperty -Path $edgeUpdateRegistryPath).UninstallCmdLine
@@ -41,4 +48,4 @@ if (Test-Path -Path $edgeUpdateRegistryPath) {
     }
 }
 
-Write-Host "Microsoft Edge and related components have been uninstalled."
+Write-Host "Microsoft Edge et les composants associés ont été désinstallés."
