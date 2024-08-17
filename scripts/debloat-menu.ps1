@@ -1,11 +1,8 @@
 $temp           = "$env:TEMP"
-$imgfolder      = "$env:USERPROFILE\Pictures\Poupli.net"
 $scriptURL      = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/scripts"
 $cdnURL        = "https://raw.githubusercontent.com/AtisFPS/WinTools/main/upload/"
 
-$LogoUrl = "$cdnURL/logo-tools.png"
 $LogoPath = "$temp/logo-tools.png"
-$BackgroundURL = "$cdnURL/background-tools.jpg"
 $BackgroundPath = "$temp/background-tools.jpg"
 
 function Tankedge {
