@@ -1,4 +1,4 @@
-$msgTitle = "OutilsBox - STS2 SISR"
+$msgTitle = "ToolsBox - STS2 SISR"
 $msgBody = "Instructions pour corriger les erreurs 2502 et 2503. Le script arrivera prochainement."
 
 $etape1 = "1. Ouvrez le dossier C:\Windows\Temp afin que vous soyez directement dans le dossier."
