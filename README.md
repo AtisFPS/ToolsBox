@@ -1,5 +1,5 @@
 # ToolsBox - SISR
-### L'objectif de ce script est de proposer une interface graphique qui permet aux utilisateurs de tout gérer depuis le script .
+### L'objectif de ce script est de proposer une interface graphique qui permet aux utilisateurs de gérer leur systemes depuis le script .
 
 ### Réaliser pour la classe de BTS SIO option réseau ( SISR ) 
 
@@ -28,6 +28,5 @@ iwr -useb tools.poupli.net | iex
 </a>
 
 ## Support // Contact
-Merci de privilegier l'addresse gmail ou discord ( j'ai encore quelques soucis a regler avec mes mails)
 - atis@poupli.net // atisfps@gmail.com
 - https://discord.com/invite/sSYEQUcwtf
