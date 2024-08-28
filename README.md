@@ -8,7 +8,7 @@
 ! Le melter peut etre detecté comme virus par le Windows Defender !
 
 [Vidéo de demonstration datant du : 18/08/2024](https://youtu.be/L1_GAO6FuoM)
-Idée inspiré par le [Winutils](https://github.com/ChrisTitusTech/winutil) de [@ChrisTitusTech](https://github.com/ChrisTitusTech) . 
+Idée inspiré par le [Winutil](https://github.com/ChrisTitusTech/winutil) de [@ChrisTitusTech](https://github.com/ChrisTitusTech) . 
 ## Fais par : [AtisFPS](https://atis.poupli.net)
 ![screen-tools](./upload/presentation.png)
 
